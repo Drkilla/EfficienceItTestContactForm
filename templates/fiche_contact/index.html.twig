@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FicheContactController!{% endblock %}
+
+{% block body %}
+    <div class="container contact-form">
+        <div class="contact-image">
+            <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+        </div>
+            <h3>Contactez nous</h3>
+            <div>
+                {{ form(form) }}
+            </div>
+    </div>
+{% endblock %}
