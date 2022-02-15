@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Departements;
-use App\Entity\FicheContact;
+use App\Entity\Contact;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class FormulaireContactType extends AbstractType
+class FormContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -59,7 +59,7 @@ class FormulaireContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => FicheContact::class,
+            'data_class' => Contact::class,
         ]);
     }
 }

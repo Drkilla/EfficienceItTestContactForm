@@ -3,15 +3,15 @@
 namespace App\Controller;
 
 use App\Classe\Mailer;
-use App\Entity\FicheContact;
-use App\Form\FormulaireContactType;
+use App\Entity\Contact;
+use App\Form\FormContactType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FicheContactController extends AbstractController
+class ContactController extends AbstractController
 {
     private $manager;
 
@@ -21,14 +21,14 @@ class FicheContactController extends AbstractController
     }
 
     /**
-     * @Route("/", name="fiche_contact")
+     * @Route("/", name="contact")
      */
     public function index(Request $request,Mailer $mailer): Response
     {
-        $contact = new FicheContact();
+        $contact = new Contact();
 
-        $form = new FormulaireContactType();
-        $form = $this->createForm(FormulaireContactType::class,$contact);
+        $form = new FormContactType();
+        $form = $this->createForm(FormContactType::class,$contact);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -40,7 +40,7 @@ class FicheContactController extends AbstractController
             return $this->redirectToRoute('successContact');
         }
 
-        return $this->render('fiche_contact/index.html.twig', [
+        return $this->render('contact_page/index.html.twig', [
             'form'=>$form->createView()
         ]);
     }
@@ -51,6 +51,6 @@ class FicheContactController extends AbstractController
     public function successContact()
     {
 
-        return $this->render('fiche_contact/successContact.html.twig');
+        return $this->render('contact_page/successContact.html.twig');
     }
 }

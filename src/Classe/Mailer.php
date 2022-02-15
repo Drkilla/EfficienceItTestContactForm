@@ -2,7 +2,7 @@
 
 namespace App\Classe;
 
-use App\Entity\FicheContact;
+use App\Entity\Contact;
 use Twig\Environment;
 
 class Mailer{
@@ -25,7 +25,7 @@ class Mailer{
 
     }
 
-    public function notify(FicheContact $contact)
+    public function notify(Contact $contact)
     {
         $message = (new \Swift_Message('Contact :'.$contact->getNom().''.$contact->getPrenom()))
             ->setFrom($contact->getMail())
